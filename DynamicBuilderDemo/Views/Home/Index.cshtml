@@ -1,0 +1,35 @@
+﻿@model DynamicBuilderDemo.Models.CustomerModel
+@using DynamicBuilderDemo.Helpers
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+</p>
+<p>
+   
+
+    @Html.CustomTextBoxFor(m => m.Name, cfg => cfg
+                                                .HasClassesListItem("errorclass")
+                                                .HasClassesListItem("OtherClass")
+                                                .HasValueSetTo("My Value")
+                                                .HasMaxLengthSetTo("10"))
+
+</p>
+<p>
+
+    @Html.CustomDropdownListFor(m => m.Gender, cfg => cfg
+                                                        .HasOnClickHandlerSetTo("console.log('woohooo - ' + new Date());")
+                                                        .HasClassSetTo("myclass")
+                                                        .HasOptionMaleWithValue("Male")
+                                                        .HasOptionFemaleWithValue("Female"))
+</p>
+<p>
+
+     @Html.CustomDatePickerFor(m => m.DateOfBirth, cfg => cfg
+                                                            .HasValueSetTo("11/11/2011")
+                                                            .HasMaxLengthSetTo("8"))
+                                                        
+</p>
